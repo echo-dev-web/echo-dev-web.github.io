@@ -3,37 +3,191 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Портфолио | Frontend Developer</title>
+    <title>Senior Frontend Engineer | Личное портфолио</title>
     <style>
-        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; max-width: 800px; margin: 0 auto; padding: 40px 20px; color: #333; background-color: #f9f9f9; }
-        h1, h2 { color: #111; }
-        .project-card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); margin-bottom: 20px; border: 1px solid #eee; }
-        .tech-stack { background: #eef2f7; padding: 2px 8px; border-radius: 4px; font-size: 0.9em; font-family: monospace; }
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --text-main: #c9d1d9;
+            --text-muted: #8b949e;
+            --accent: #58a6ff;
+            --border: #30363d;
+            --success: #238636;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding: 40px 20px;
+        }
+        .container { max-width: 1000px; margin: 0 auto; }
+        
+        /* Hero Section */
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 30px;
+            margin-bottom: 40px;
+        }
+        .profile-info h1 { font-size: 2.5rem; color: #fff; margin-bottom: 10px; }
+        .status-badge {
+            display: inline-block;
+            background: rgba(56, 139, 253, 0.15);
+            color: var(--accent);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(56, 139, 253, 0.4);
+            margin-bottom: 15px;
+        }
+
+        /* Grid Layout */
+        .grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+        }
+        @media (max-width: 768px) { .grid { grid-template-columns: 1fr; } }
+
+        section { margin-bottom: 40px; }
+        h2 { font-size: 1.6rem; color: #fff; margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+        
+        /* Cards */
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            padding: 24px;
+            margin-bottom: 20px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+        .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+        .card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .card-title { color: #fff; font-size: 1.2rem; }
+        .card-date { font-size: 0.85rem; color: var(--text-muted); }
+        
+        /* Skills Meter */
+        .skill-row { margin-bottom: 15px; }
+        .skill-name { display: flex; justify-content: space-between; font-size: 0.9rem; margin-bottom: 5px; }
+        .progress-bar { background: var(--border); height: 8px; border-radius: 4px; overflow: hidden; }
+        .progress-fill { background: var(--accent); height: 100%; border-radius: 4px; }
+
+        /* Tags */
+        .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 15px; }
+        .tag { background: #21262d; border: 1px solid var(--border); color: var(--text-main); padding: 3px 8px; border-radius: 4px; font-size: 0.8rem; font-family: monospace; }
+        
+        /* Activity graph simulation */
+        .activity-box { background: var(--card-bg); border: 1px solid var(--border); border-radius: 6px; padding: 20px; text-align: center; }
+        .matrix { display: grid; grid-template-columns: repeat(12, 1fr); gap: 4px; margin-top: 15px; }
+        .cube { background: #21262d; height: 12px; border-radius: 2px; }
+        .cube.high { background: #104d26; }
+        .cube.medium { background: #006d32; }
+        .cube.max { background: #39d353; }
     </style>
 </head>
 <body>
-    <header>
-        <h1>Привет! Я начинающий веб-разработчик.</h1>
-        <p>Изучаю современные технологии, создаю быстрые и адаптивные сайты. Ниже представлены мои учебные проекты.</p>
-    </header>
-    
-    <main>
-        <h2>Мои проекты</h2>
-        <div class="project-card">
-            <h3>Веб-приложение "Менеджер задач"</h3>
-            <p>Удобный таск-трекер для планирования ежедневных задач. Реализована фильтрация, дедлайны и сохранение данных в локальное хранилище.</p>
-            <p><strong>Стек:</strong> <span class="tech-stack">HTML5</span> <span class="tech-stack">CSS3</span> <span class="tech-stack">JavaScript</span></p>
+    <div class="container">
+        <header>
+            <div class="profile-info">
+                <span class="status-badge">● Open to Work</span>
+                <h1>Алексей Иванов</h1>
+                <p style="color: var(--text-muted); font-size: 1.2rem;">Senior Frontend Engineer / JavaScript Architect</p>
+            </div>
+        </header>
+
+        <div class="grid">
+            <!-- Левая колонка: Опыт и Проекты -->
+            <div class="main-content">
+                <section>
+                    <h2>💼 Коммерческий опыт работы</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Lead Frontend Developer</div>
+                                <div style="color: var(--accent);">ТехноРешения Инкорпорейтед</div>
+                            </div>
+                            <div class="card-date">2023 — Наст. время</div>
+                        </div>
+                        <p>Проектирование архитектуры крупных SPA-приложений, миграция монолита на микрофронтенды (Module Federation). Оптимизация Core Web Vitals (ускорение загрузки страниц на 42%). Руководство командой из 6 разработчиков.</p>
+                        <div class="tags">
+                            <span class="tag">TypeScript</span><span class="tag">Next.js</span><span class="tag">Websocket</span><span class="tag">GraphQL</span>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header">
+                            <div>
+                                <div class="card-title">Senior Software Engineer</div>
+                                <div style="color: var(--text-muted);">Digital Space Agency</div>
+                            </div>
+                            <div class="card-date">2021 — 2023</div>
+                        </div>
+                        <p>Разработка высоконагруженных дашбордов для мониторинга аналитики в реальном времени. Внедрение строгой типизации, интеграция сложных систем авторизации и протоколов сквозного шифрования на стороне клиента.</p>
+                        <div class="tags">
+                            <span class="tag">React</span><span class="tag">Redux Toolkit</span><span class="tag">Node.js</span><span class="tag">REST API</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>🚀 Ключевые Open-Source Проекты</h2>
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">⚡ Fast-Sync-State</div>
+                        </div>
+                        <p>Легковесный менеджер состояния для React с автоматической синхронизацией данных через WebSockets. Более 15,000 загрузок в npm.</p>
+                        <div class="tags">
+                            <span class="tag">NPM</span><span class="tag">Rollup</span><span class="tag">CI/CD</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Правая колонка: Навыки и Графики -->
+            <div class="sidebar">
+                <section>
+                    <h2>🛠 Технический стек</h2>
+                    <div class="card">
+                        <div class="skill-row">
+                            <div class="skill-name"><span>JavaScript / TypeScript</span><span>95%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 95%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-name"><span>React / Next.js</span><span>90%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-name"><span>HTML5 / CSS3 / SCSS</span><span>85%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 85%;"></div></div>
+                        </div>
+                        <div class="skill-row">
+                            <div class="skill-name"><span>Node.js & Databases</span><span>70%</span></div>
+                            <div class="progress-bar"><div class="progress-fill" style="width: 70%;"></div></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>📊 Активность репозитория</h2>
+                    <div class="activity-box">
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">1,420 коммитов за последний год</span>
+                        <div class="matrix">
+                            <!-- Имитация сетки коммитов как на Гитхабе -->
+                            <div class="cube high"></div><div class="cube"></div><div class="cube max"></div><div class="cube medium"></div>
+                            <div class="cube high"></div><div class="cube max"></div><div class="cube"></div><div class="cube high"></div>
+                            <div class="cube medium"></div><div class="cube high"></div><div class="cube max"></div><div class="cube medium"></div>
+                            <div class="cube max"></div><div class="cube high"></div><div class="cube"></div><div class="cube high"></div>
+                            <div class="cube medium"></div><div class="cube"></div><div class="cube high"></div><div class="cube max"></div>
+                            <div class="cube max"></div><div class="cube high"></div><div class="cube"></div><div class="cube high"></div>
+                        </div>
+                    </div>
+                </section>
+            </div>
         </div>
 
-        <div class="project-card">
-            <h3>Сайт-визитка для локального бизнеса</h3>
-            <p>Адаптивный лендинг с чистым дизайном, оптимизированный под мобильные устройства и SEO требования.</p>
-            <p><strong>Стек:</strong> <span class="tech-stack">HTML5</span> <span class="tech-stack">SCSS</span> <span class="tech-stack">Flexbox</span></p>
-        </div>
-    </main>
-
-    <footer>
-        <p>© 2026 Моё IT-Портфолио. Собрано для демонстрации навыков.</p>
-    </footer>
-</body>
-</html>
+        <footer style="text-align: center; margin-top: 40px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem;">
